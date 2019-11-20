@@ -22,4 +22,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: yarn test
-      - run: yarn chromatic test --app-code=<app-code> --exit-zero-on-changes
+      - run: yarn chromatic test --app-code=98q3b6r9mv --exit-zero-on-changes
+      - run: |
+    if [ $CIRCLE_BRANCH = "master" ]
+    then
+      yarn release
+    fi
